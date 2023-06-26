@@ -46,7 +46,7 @@ describe('Booking API - test all methods', () => {
             expect(response.status).is.eq(200);
             expect(response.statusText).is.eq('OK');
             expect(response.body.length).to.be.greaterThan(0);
-            expect(response.body[0]).to.have.property('bookingid')
+            expect(response.body[0]).to.have.property('bookingid');
             expect(response.body[0].bookingid).to.be.a('number');
         });
     });
