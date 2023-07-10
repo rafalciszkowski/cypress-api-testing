@@ -47,3 +47,26 @@ Cypress.Commands.add('logInUser', (email) => {
         }
     });
 });
+
+Cypress.Commands.add('addContact', (token) => {
+    cy.api({
+        method: 'POST',
+        url: '/contacts',
+        body: {
+            "firstName": "Roman",
+            "lastName": "Doman",
+            "birthdate": "1980-01-01",
+            "email": "roman@doman.com",
+            "phone": "8005555555",
+            "street1": "1 Main St.",
+            "street2": "Apartment A",
+            "city": "Anytown",
+            "stateProvince": "KS",
+            "postalCode": "12345",
+            "country": "USA"
+        },
+        headers: {
+            Authorization: token
+        }
+    });
+})
