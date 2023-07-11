@@ -1,0 +1,200 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 6,
+    "passes": 6,
+    "pending": 0,
+    "failures": 0,
+    "testsRegistered": 6,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2023-07-11T08:41:32.487Z",
+    "end": "2023-07-11T08:41:35.454Z",
+    "duration": 2967
+  },
+  "results": [
+    {
+      "uuid": "bd74c6cb-7597-4a01-aa0a-4d009318c18e",
+      "title": "",
+      "fullFile": "cypress\\e2e\\bookingApiAllMethods.cy.js",
+      "file": "cypress\\e2e\\bookingApiAllMethods.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+          "title": "Booking API - test all methods",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "GET - get all bookings",
+              "fullTitle": "Booking API - test all methods GET - get all bookings",
+              "timedOut": null,
+              "duration": 1330,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.api('/booking').then(response => {\n  expect(response.status).is.eq(200);\n  expect(response.statusText).is.eq('OK');\n  expect(response.body.length).to.be.greaterThan(0);\n  expect(response.body[0]).to.have.property('bookingid');\n  expect(response.body[0].bookingid).to.be.a('number');\n});",
+              "err": {},
+              "uuid": "f605bdde-3a34-4240-a09f-ae8d9b437e53",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "POST - create new booking",
+              "fullTitle": "Booking API - test all methods POST - create new booking",
+              "timedOut": null,
+              "duration": 189,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.api({\n  method: 'POST',\n  url: '/booking',\n  body: bookingObjectOrigin\n}).then(response => {\n  expect(response.status).is.eq(200);\n  expect(response.statusText).is.eq('OK');\n  expect(response.body).to.have.property('bookingid');\n  expect(response.body).to.have.property('booking');\n  expect(response.body.bookingid).to.be.a('number');\n  expect(response.body.booking).to.be.an('object');\n  expect(response.body.booking).to.deep.eq(bookingObjectOrigin);\n  cy.wrap(response.body.bookingid).as('bookingId');\n});",
+              "err": {},
+              "uuid": "c919a134-2490-4ee3-bc56-08b96dd56298",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "GET - get a specific booking",
+              "fullTitle": "Booking API - test all methods GET - get a specific booking",
+              "timedOut": null,
+              "duration": 171,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.api({\n  method: 'GET',\n  url: `/booking/${this.bookingId}`\n}).then(response => {\n  expect(response.status).is.eq(200);\n  expect(response.statusText).is.eq('OK');\n  expect(response.body).to.deep.eq(bookingObjectOrigin);\n});",
+              "err": {},
+              "uuid": "2ca8c942-ffe5-4953-9e61-f674f3440e7e",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PUT - update specific booking",
+              "fullTitle": "Booking API - test all methods PUT - update specific booking",
+              "timedOut": null,
+              "duration": 168,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.api({\n  method: 'PUT',\n  url: `/booking/${this.bookingId}`,\n  headers: {\n    Cookie: `token=${this.token}`\n  },\n  body: bookingObjectUpdated\n}).then(response => {\n  expect(response.status).is.eq(200);\n  expect(response.statusText).is.eq('OK');\n  expect(response.body).to.deep.eq(bookingObjectUpdated);\n});",
+              "err": {},
+              "uuid": "c0dcaa56-ad11-4a21-9878-22293337a4f3",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "PATCH - update specific field in specific booking",
+              "fullTitle": "Booking API - test all methods PATCH - update specific field in specific booking",
+              "timedOut": null,
+              "duration": 185,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const updatedName = {\n  \"firstname\": \"Robert\"\n};\ncy.api({\n  method: 'PATCH',\n  url: `/booking/${this.bookingId}`,\n  headers: {\n    Cookie: `token=${this.token}`\n  },\n  body: updatedName\n}).then(response => {\n  expect(response.status).is.eq(200);\n  expect(response.statusText).is.eq('OK');\n  expect(response.body.firstname).is.eq(updatedName.firstname);\n});",
+              "err": {},
+              "uuid": "ba05e5ff-3336-4a96-b311-01a44ada9d30",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "DELETE - delete specific booking",
+              "fullTitle": "Booking API - test all methods DELETE - delete specific booking",
+              "timedOut": null,
+              "duration": 173,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.api({\n  method: 'DELETE',\n  url: `/booking/${this.bookingId}`,\n  headers: {\n    Cookie: `token=${this.token}`\n  }\n}).then(response => {\n  expect(response.status).is.eq(201);\n  expect(response.statusText).is.eq('Created');\n});",
+              "err": {},
+              "uuid": "04c967a3-2b25-4fbe-ad79-9072e66d547b",
+              "parentUUID": "39d68c2e-ba3e-46cf-aeb9-2b987d7c33ee",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f605bdde-3a34-4240-a09f-ae8d9b437e53",
+            "c919a134-2490-4ee3-bc56-08b96dd56298",
+            "2ca8c942-ffe5-4953-9e61-f674f3440e7e",
+            "c0dcaa56-ad11-4a21-9878-22293337a4f3",
+            "ba05e5ff-3336-4a96-b311-01a44ada9d30",
+            "04c967a3-2b25-4fbe-ad79-9072e66d547b"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2216,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

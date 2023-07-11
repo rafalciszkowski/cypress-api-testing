@@ -206,6 +206,9 @@ describe('Contact List App', () => {
                 headers: {
                     Authorization: this.token
                 }
+            }).then(({ status, statusText }) => {
+                expect(status).is.eq(200);
+                expect(statusText).is.eq('OK');
             });
 
             cy.visit('/contactList/');
@@ -233,6 +236,9 @@ describe('Contact List App', () => {
                 headers: {
                     Authorization: this.token
                 }
+            }).then(({ status, statusText }) => {
+                expect(status).is.eq(200);
+                expect(statusText).is.eq('OK');
             });
 
             cy.visit('/contactList/');

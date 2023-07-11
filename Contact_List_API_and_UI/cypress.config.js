@@ -7,5 +7,12 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://thinking-tester-contact-list.herokuapp.com'
   },
-  video: false
+  video: false,
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/results',
+    overwrite: false,
+    html: false,
+    json: true,
+  }
 });
