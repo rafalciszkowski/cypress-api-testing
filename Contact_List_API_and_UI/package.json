@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "triggerTest-headless": "npx cypress run",
     "delete-results": "rm -rf cypress/results/* || true",
     "delete-mochawesome-report": "rm -rf mochawesome-report/* || true",
     "delete-mochawesome-json": "rm -rf mochawesome.json",
     "mochawesome-merge": "npx mochawesome-merge cypress/results/*.json > mochawesome.json && npx marge mochawesome.json",
+    "triggerTest-headless": "npx cypress run",
+    "triggerTest-chrome-headed": "npx cypress run --headed --browser chrome",
     "triggerTest-headless-report": "npm run delete-results && npm run delete-mochawesome-report && npm run delete-mochawesome-json && npm run triggerTest-headless && npm run mochawesome-merge",
-    "triggerTest-chrome-headed": "npx cypress run --headed --browser chrome"
+    "triggerTest-headed-report": "npm run delete-results && npm run delete-mochawesome-report && npm run delete-mochawesome-json && npm run triggerTest-chrome-headed && npm run mochawesome-merge"
   },
   "author": "",
   "license": "ISC",
