@@ -17,16 +17,20 @@ This project contains API tests for two different applications: Booker API and C
    git clone https://github.com/rafalciszkowski/cypress-api-testing.git
 
 2. Navigate to the project directory:
+   ```bash
    cd cypress-api-testing
 
-3. Install dependencies:
+4. Install dependencies:
+   ```bash
    npm install
 
 ## Running Tests
 1. Open Cypress:
+   ```bash
    npx cypress open
 
-2. Run tests in headless mode:
+3. Run tests in headless mode:
+   ```bash
    npx cypress run
 
 ## Configuration
