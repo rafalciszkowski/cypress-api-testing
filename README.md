@@ -34,7 +34,7 @@ This project contains API tests for two different applications: Booker API and C
    npx cypress run
 
 ## Configuration
-The cypress.json file contains the basic Cypress settings. You can customize it to suit your needs.
+The `cypress.json` file contains the basic Cypress settings. You can customize it to suit your needs.
 
 ## Author
 Rafał Ciszkowski
